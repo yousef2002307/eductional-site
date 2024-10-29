@@ -1,0 +1,2144 @@
+openapi: 3.0.3
+info:
+  title: MrOmarsite
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/v1/parent:
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"data\": [\n{\n\"id\": 1,\n\"name\": \"John Doe\",\n\"email\": \"john@example.com\",\n\"child_id\": 1,\n\"study_year\": 1 or 2 or 3 , // 1 = 1st year , 2 = 2nd year , 3 = 3rd year and these values are the only accepted vals\n\"is_subscribed\": true ,\n\"is_parent\": true,\n\"code\": {\n\"id\": 1,\n\"parent_id\": 1,\n\"code\": \"Parent Code\"\n}\n}\n]\n}"
+      tags:
+        - 'Admin operation on Parents'
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Admin operation on Parents'
+      security: []
+  /api/v1/parent/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      operationId: showTheFormForCreatingANewResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Admin operation on Parents'
+      security: []
+  '/api/v1/parent/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    parent_id: 1
+                    code: 'Parent Code'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      parent_id:
+                        type: integer
+                        example: 1
+                      code:
+                        type: string
+                        example: 'Parent Code'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'User not found'
+      tags:
+        - 'Admin operation on Parents'
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Admin operation on Parents'
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Admin operation on Parents'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the parent.'
+        example: aut
+        required: true
+        schema:
+          type: string
+  '/api/v1/parent/{parent}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      operationId: showTheFormForEditingTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Admin operation on Parents'
+      security: []
+    parameters:
+      -
+        in: path
+        name: parent
+        description: 'The parent.'
+        example: voluptatibus
+        required: true
+        schema:
+          type: string
+  '/api/v1/actdis/{id}':
+    get:
+      summary: 'Activate or deactivate a user'
+      operationId: activateOrDeactivateAUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User activated successfully'
+                properties:
+                  message:
+                    type: string
+                    example: 'User activated successfully'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'User not found'
+      tags:
+        - 'Admin operations'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the actdi.'
+        example: aliquam
+        required: true
+        schema:
+          type: string
+  '/api/v1/getstudentstatus/{id}':
+    get:
+      summary: 'Get the status of a user'
+      operationId: getTheStatusOfAUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  student_status: 1
+                properties:
+                  student_status:
+                    type: integer
+                    example: 1
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'User not found'
+      tags:
+        - 'Admin operations'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the getstudentstatus.'
+        example: optio
+        required: true
+        schema:
+          type: string
+  /api/v1/getpaymentsrecored:
+    get:
+      summary: ''
+      operationId: getApiV1Getpaymentsrecored
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Admin operations'
+      security: []
+  '/api/v1/paymentstatus/{id}':
+    get:
+      summary: ''
+      operationId: getApiV1PaymentstatusId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Admin operations'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the paymentstatus.'
+        example: ad
+        required: true
+        schema:
+          type: string
+  '/api/v1/admlessonsid/{id}':
+    get:
+      summary: ''
+      operationId: getApiV1AdmlessonsidId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Admin operations'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the admlessonsid.'
+        example: ut
+        required: true
+        schema:
+          type: string
+  /api/v1/admlessons:
+    get:
+      summary: ''
+      operationId: getApiV1Admlessons
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Admin operations'
+      security: []
+  '/api/v1/admlessonsy/{id}':
+    get:
+      summary: ''
+      operationId: getApiV1AdmlessonsyId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Admin operations'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the admlessonsy.'
+        example: quod
+        required: true
+        schema:
+          type: string
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/rr:
+    get:
+      summary: ''
+      operationId: getApiV1Rr
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/logout:
+    post:
+      summary: 'Destroy an authenticated session.'
+      operationId: destroyAnAuthenticatedSession
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/user/profile-information:
+    put:
+      summary: ''
+      operationId: putApiV1UserProfileInformation
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/user/password:
+    put:
+      summary: ''
+      operationId: putApiV1UserPassword
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/forgot-password:
+    post:
+      summary: 'Send a reset link to the given user.'
+      operationId: sendAResetLinkToTheGivenUser
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/register:
+    post:
+      summary: ''
+      operationId: postApiV1Register
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/quiz:
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Quiz endpoint'
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Quiz endpoint'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: ''
+                  example: corporis
+                description:
+                  type: string
+                  description: ''
+                  example: 'Nulla inventore iure aut sapiente.'
+              required:
+                - title
+                - description
+      security: []
+  /api/v1/quiz/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      operationId: showTheFormForCreatingANewResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Quiz endpoint'
+      security: []
+  '/api/v1/quiz/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Quiz endpoint'
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Quiz endpoint'
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Quiz endpoint'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the quiz.'
+        example: dignissimos
+        required: true
+        schema:
+          type: string
+  '/api/v1/quiz/{quiz}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      operationId: showTheFormForEditingTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Quiz endpoint'
+      security: []
+    parameters:
+      -
+        in: path
+        name: quiz
+        description: 'The quiz.'
+        example: earum
+        required: true
+        schema:
+          type: string
+  /api/v1/rate:
+    get:
+      summary: ''
+      operationId: getApiV1Rate
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Rate
+      security: []
+    post:
+      summary: ''
+      operationId: postApiV1Rate
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Rate
+      security: []
+  '/api/v1/rate/{id}':
+    get:
+      summary: ''
+      operationId: getApiV1RateId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Rate
+      security: []
+    put:
+      summary: ''
+      operationId: putApiV1RateId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Rate
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiV1RateId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Rate
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the rate.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  /api/v1/hislesson:
+    get:
+      summary: ''
+      operationId: getApiV1Hislesson
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Student
+      security: []
+  /api/v1/success:
+    post:
+      summary: 'Subscribe to the service'
+      operationId: subscribeToTheService
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Subscribed Successfully'
+                properties:
+                  message:
+                    type: string
+                    example: 'Subscribed Successfully'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User not authenticated'
+                properties:
+                  message:
+                    type: string
+                    example: 'User not authenticated'
+      tags:
+        - Student
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: string
+                  description: 'The amount of money to be paid.'
+                  example: '50'
+              required:
+                - amount
+      security: []
+  /api/v1/cancel:
+    post:
+      summary: 'Unsubscribe from the service'
+      operationId: unsubscribeFromTheService
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Unsubscribed Successfully'
+                properties:
+                  message:
+                    type: string
+                    example: 'Unsubscribed Successfully'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User not authenticated'
+                properties:
+                  message:
+                    type: string
+                    example: 'User not authenticated'
+      tags:
+        - Student
+      security: []
+  /api/v1/is_Subscribe:
+    get:
+      summary: 'Check if the user is subscribed'
+      operationId: checkIfTheUserIsSubscribed
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  subscribed: true
+                properties:
+                  subscribed:
+                    type: boolean
+                    example: true
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User not authenticated'
+                properties:
+                  message:
+                    type: string
+                    example: 'User not authenticated'
+      tags:
+        - Student
+      security: []
+  /api/v1/profile:
+    get:
+      summary: 'Get the profile data of the user'
+      operationId: getTheProfileDataOfTheUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"id\": 1,\n\"name\": \"John Doe\",\n\"email\": \"john@example.com\",\n\"child_id\": 1,\n\"study_year\": 1 or 2 or 3 , // 1 = 1st year , 2 = 2nd year , 3 = 3rd year and these values are the only accepted vals\n\"is_subscribed\": true ,\n\"is_parent\": true\n}"
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User not authenticated'
+                properties:
+                  message:
+                    type: string
+                    example: 'User not authenticated'
+      tags:
+        - Student
+      security: []
+  /api/v1/parentcode:
+    get:
+      summary: 'Get the parent code of the user'
+      operationId: getTheParentCodeOfTheUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 1
+                  parent_id: 1
+                  code: 'Parent Code'
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  parent_id:
+                    type: integer
+                    example: 1
+                  code:
+                    type: string
+                    example: 'Parent Code'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User not authenticated'
+                properties:
+                  message:
+                    type: string
+                    example: 'User not authenticated'
+      tags:
+        - Student
+      security: []
+  /api/v1/generateparentcode:
+    post:
+      summary: 'Generate a new parent code for the user'
+      operationId: generateANewParentCodeForTheUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 1
+                  parent_id: 1
+                  code: 'Parent Code'
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  parent_id:
+                    type: integer
+                    example: 1
+                  code:
+                    type: string
+                    example: 'Parent Code'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User not authenticated'
+                properties:
+                  message:
+                    type: string
+                    example: 'User not authenticated'
+      tags:
+        - Student
+      security: []
+  /api/v1/regenerateparentcode:
+    post:
+      summary: 'Generate a new parent code for the user'
+      operationId: generateANewParentCodeForTheUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 1
+                  parent_id: 1
+                  code: 'Parent Code'
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  parent_id:
+                    type: integer
+                    example: 1
+                  code:
+                    type: string
+                    example: 'Parent Code'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User not authenticated'
+                properties:
+                  message:
+                    type: string
+                    example: 'User not authenticated'
+      tags:
+        - Student
+      security: []
+  /api/v1/hisrate:
+    get:
+      summary: ''
+      operationId: getApiV1Hisrate
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Student
+      security: []
+  /api/v1/hisattend:
+    get:
+      summary: ''
+      operationId: getApiV1Hisattend
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Student
+      security: []
+  /api/v1/students:
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: 'John Doe'
+                      email: john@example.com
+                      studyyear: 1
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'John Doe'
+                        email: john@example.com
+                        studyyear: 1
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'John Doe'
+                        email:
+                          type: string
+                          example: john@example.com
+                        studyyear:
+                          type: integer
+                          example: 1
+      tags:
+        - 'admin operation on students'
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Student created successfully'
+                properties:
+                  message:
+                    type: string
+                    example: 'Student created successfully'
+      tags:
+        - 'admin operation on students'
+      security: []
+  /api/v1/students/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      operationId: showTheFormForCreatingANewResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'admin operation on students'
+      security: []
+  '/api/v1/students/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'John Doe'
+                    email: john@example.com
+                    studyyear: 1
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: john@example.com
+                      studyyear:
+                        type: integer
+                        example: 1
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Student not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'Student not found'
+      tags:
+        - 'admin operation on students'
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Student updated successfully'
+                properties:
+                  message:
+                    type: string
+                    example: 'Student updated successfully'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Student not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'Student not found'
+      tags:
+        - 'admin operation on students'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: autem
+                studyyear:
+                  type: string
+                  description: ''
+                  example: quos
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: quinten97@example.net
+                password:
+                  type: string
+                  description: ''
+                  example: nam
+              required:
+                - name
+                - studyyear
+                - email
+                - password
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Student deleted successfully'
+                properties:
+                  message:
+                    type: string
+                    example: 'Student deleted successfully'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Student not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'Student not found'
+      tags:
+        - 'admin operation on students'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the student.'
+        example: aperiam
+        required: true
+        schema:
+          type: string
+  '/api/v1/students/{student}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      operationId: showTheFormForEditingTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'admin operation on students'
+      security: []
+    parameters:
+      -
+        in: path
+        name: student
+        description: 'The student.'
+        example: dolores
+        required: true
+        schema:
+          type: string
+  /api/v1/ans:
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'answer endpoint'
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'answer endpoint'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                answer_text:
+                  type: string
+                  description: ''
+                  example: provident
+                question_id:
+                  type: number
+                  description: ''
+                  example: 332072.0
+                is_correct:
+                  type: boolean
+                  description: ''
+                  example: false
+              required:
+                - answer_text
+                - question_id
+                - is_correct
+      security: []
+  /api/v1/ans/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      operationId: showTheFormForCreatingANewResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'answer endpoint'
+      security: []
+  '/api/v1/ans/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'answer endpoint'
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'answer endpoint'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                answer_text:
+                  type: string
+                  description: ''
+                  example: voluptatem
+                question_id:
+                  type: number
+                  description: ''
+                  example: 5188.3825602
+                is_correct:
+                  type: boolean
+                  description: ''
+                  example: false
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'answer endpoint'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the an.'
+        example: aut
+        required: true
+        schema:
+          type: string
+  '/api/v1/ans/{an}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      operationId: showTheFormForEditingTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'answer endpoint'
+      security: []
+    parameters:
+      -
+        in: path
+        name: an
+        description: 'The an.'
+        example: alias
+        required: true
+        schema:
+          type: string
+  /api/v1/attend:
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - attendence
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - attendence
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                attendance_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2024-10-13T10:16:07'
+                user_id:
+                  type: string
+                  description: ''
+                  example: quis
+                present:
+                  type: boolean
+                  description: ''
+                  example: false
+              required:
+                - attendance_date
+                - user_id
+                - present
+      security: []
+  /api/v1/attend/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      operationId: showTheFormForCreatingANewResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - attendence
+      security: []
+  '/api/v1/attend/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - attendence
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - attendence
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                attendance_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2024-10-13T10:16:07'
+                user_id:
+                  type: string
+                  description: ''
+                  example: consectetur
+                present:
+                  type: boolean
+                  description: ''
+                  example: false
+              required:
+                - attendance_date
+                - user_id
+                - present
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - attendence
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the attend.'
+        example: est
+        required: true
+        schema:
+          type: string
+  '/api/v1/attend/{attend}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      operationId: showTheFormForEditingTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - attendence
+      security: []
+    parameters:
+      -
+        in: path
+        name: attend
+        description: 'The attend.'
+        example: quibusdam
+        required: true
+        schema:
+          type: string
+  /api/v1/parentlogin:
+    post:
+      summary: 'Login user based on the provided code.'
+      operationId: loginUserBasedOnTheProvidedCode
+      description: 'This endpoint checks if a specific code exists in the database.'
+      parameters: []
+      responses: {  }
+      tags:
+        - 'parent endpoint'
+      security: []
+  /api/v1/getlast5rating:
+    post:
+      summary: 'Get the last 5 rating of the user that is associated with the provided code'
+      operationId: getTheLast5RatingOfTheUserThatIsAssociatedWithTheProvidedCode
+      description: 'This endpoint gets the last 5 rating of a user that is associated with the provided code.'
+      parameters: []
+      responses: {  }
+      tags:
+        - 'parent endpoint'
+      security: []
+  /api/v1/getlast5attendence:
+    post:
+      summary: 'Get the last 5 attendence of the user that is associated with the provided code'
+      operationId: getTheLast5AttendenceOfTheUserThatIsAssociatedWithTheProvidedCode
+      description: 'This endpoint gets the last 5 attendence of a user that is associated with the provided code.'
+      parameters: []
+      responses: {  }
+      tags:
+        - 'parent endpoint'
+      security: []
+  /api/v1/getlast5result:
+    post:
+      summary: 'Get the last 5 result of the user that is associated with the provided code'
+      operationId: getTheLast5ResultOfTheUserThatIsAssociatedWithTheProvidedCode
+      description: 'This endpoint gets the last 5 result of a user that is associated with the provided code.'
+      parameters: []
+      responses: {  }
+      tags:
+        - 'parent endpoint'
+      security: []
+  /api/v1/getpay:
+    post:
+      summary: 'Check if the child of parent is subscribed'
+      operationId: checkIfTheChildOfParentIsSubscribed
+      description: 'This endpoint check if the user that is associated with the provided code is subscribed or not'
+      parameters: []
+      responses: {  }
+      tags:
+        - 'parent endpoint'
+      security: []
+  /api/v1/question:
+    get:
+      summary: ''
+      operationId: getApiV1Question
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'questions endpoint'
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'questions endpoint'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                question_text:
+                  type: string
+                  description: ''
+                  example: voluptatum
+                quiz_id:
+                  type: number
+                  description: ''
+                  example: 325358027.0
+              required:
+                - question_text
+                - quiz_id
+      security: []
+  /api/v1/question/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      operationId: showTheFormForCreatingANewResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'questions endpoint'
+      security: []
+  '/api/v1/question/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'questions endpoint'
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'questions endpoint'
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'questions endpoint'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the question.'
+        example: sunt
+        required: true
+        schema:
+          type: string
+  '/api/v1/question/{question}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      operationId: showTheFormForEditingTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'questions endpoint'
+      security: []
+    parameters:
+      -
+        in: path
+        name: question
+        description: 'The question.'
+        example: incidunt
+        required: true
+        schema:
+          type: string
+  /api/v1/response:
+    get:
+      summary: ''
+      operationId: getApiV1Response
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'responses endpoint'
+      security: []
+    post:
+      summary: ''
+      operationId: postApiV1Response
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'responses endpoint'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                student_id:
+                  type: number
+                  description: ''
+                  example: 149816187.41131
+                quiz_id:
+                  type: number
+                  description: ''
+                  example: 4903.18872
+                question_id:
+                  type: number
+                  description: ''
+                  example: 16.9409
+                selected_answer_id:
+                  type: number
+                  description: ''
+                  example: 3487837.1945096
+              required:
+                - student_id
+                - quiz_id
+                - question_id
+                - selected_answer_id
+      security: []
+  '/api/v1/response/{id}':
+    get:
+      summary: ''
+      operationId: getApiV1ResponseId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'responses endpoint'
+      security: []
+    put:
+      summary: ''
+      operationId: putApiV1ResponseId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'responses endpoint'
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiV1ResponseId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'responses endpoint'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the response.'
+        example: dolorem
+        required: true
+        schema:
+          type: string
+  /api/v1/result:
+    get:
+      summary: ''
+      operationId: getApiV1Result
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'results endpoint'
+      security: []
+    post:
+      summary: ''
+      operationId: postApiV1Result
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'results endpoint'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: number
+                  description: ''
+                  example: 3450.08
+                quiz_id:
+                  type: number
+                  description: ''
+                  example: 154703.711475
+                score:
+                  type: number
+                  description: 'Must be at least 0 . Must not be greater than 100.'
+                  example: 4
+              required:
+                - user_id
+                - quiz_id
+                - score
+      security: []
+  '/api/v1/result/{id}':
+    get:
+      summary: ''
+      operationId: getApiV1ResultId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'results endpoint'
+      security: []
+    put:
+      summary: ''
+      operationId: putApiV1ResultId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'results endpoint'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: number
+                  description: ''
+                  example: 132.4136926
+                quiz_id:
+                  type: number
+                  description: ''
+                  example: 6061.05885
+                score:
+                  type: number
+                  description: 'Must be at least 0 . Must not be greater than 100.'
+                  example: 21
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiV1ResultId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'results endpoint'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the result.'
+        example: non
+        required: true
+        schema:
+          type: string
+tags:
+  -
+    name: 'Admin operation on Parents'
+    description: "\nAPIs for admin operations on parent"
+  -
+    name: 'Admin operations'
+    description: "\nAPIs for admin operations"
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: 'Quiz endpoint'
+    description: "\nAPIs for Quiz"
+  -
+    name: Rate
+    description: "\nAPIs for crud operation on rating student"
+  -
+    name: Student
+    description: "\nAPIs for student"
+  -
+    name: 'admin operation on students'
+    description: "\nAPIs for crud operation on  students\nhere all crud(create edit delete ) students can be done"
+  -
+    name: 'answer endpoint'
+    description: "\nAPIs for answer"
+  -
+    name: attendence
+    description: "\nAPIs for crud operation on  student attendence"
+  -
+    name: 'parent endpoint'
+    description: "\nAPIs for parent"
+  -
+    name: 'questions endpoint'
+    description: "\nAPIs for questions"
+  -
+    name: 'responses endpoint'
+    description: "\nAPIs for responses"
+  -
+    name: 'results endpoint'
+    description: "\nAPIs for results"
